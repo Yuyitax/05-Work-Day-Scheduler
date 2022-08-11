@@ -1,8 +1,6 @@
 // Global Variables
-var toDoInput = $('.textarea');
+var allTextAreas = $('.textarea')
 var saveInput = $('.saveBtn');
-
-
 
 
 // Save input to local Storage
@@ -17,8 +15,6 @@ localStorage.setItem(time, text);
 
 
 
-
-
 //Current Time and Date
 var currentTime = function () {
     document.getElementById('currentTime').innerText = moment().format(
@@ -27,25 +23,35 @@ var currentTime = function () {
   };
   setInterval(currentTime, 1000);
 
-  
-
 
 // Setting the time by color
+allTextAreas.each(function(){
 
-var allTextAreas = $('.textarea')
+var blockHour = parseInt($(this).parent().attr('id').split('-')[1])
+console.log(blockHour)
+var currentHour = moment().hour()
+console.log(currentHour)
 
-for (var hourSlot = 8; hourSlot < 18; hourSlot++) {
 
-  if (hourSlot < currentTime) {
-  $(allTextAreas).addClass('future');
-}else if (hourSlot === currentTime) {
-  $(allTextAreas).addClass('present');
+
+
+  if (currentHour === blockHour) {
+  $(this).removeClass('past');
+  $(this).removeClass('future');
+  $(this).addClass('present');
+} else if (currentHour < blockHour) {
+  $(this).removeClass('past');
+  $(this).removeClass('present');
+
+  $(this).addClass('future');
+ 
 } else {
-  $(allTextAreas).addClass('past');
-  console.log(hourSlot)
-}
-}
+  $(this).removeClass('future');
+  $(this).removeClass('present');
 
+  $(this).addClass('past');
+}
+}) 
 // Not working:
 // var allTextAreas = $('.textarea')
 
