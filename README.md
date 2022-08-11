@@ -42,7 +42,7 @@ The following animation demonstrates the application functionality:
 
 ## URL to launch website
 
-**Please View the Final page here: [View APIs Quiz Website](https://yuyitax.github.io/05-Work-Day-Scheduler/)
+**Please use the following link to view the website: [Work Day Scheduler Website](https://yuyitax.github.io/05-Work-Day-Scheduler/)
 
 ---
 
