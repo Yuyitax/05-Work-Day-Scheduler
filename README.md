@@ -37,7 +37,7 @@ The following animation demonstrates the application functionality:
 
 ![Look inside the Local Storage, Key is the time and Value is the input](./assets/todo-saved-local-storage.png)
 
-![Look if time is on hour 13, showing classes working correctly](./assets/hour-13-preview.png)
+![Look if time is on hour 13, showing classes working correctly](./assets/hour-11-preview.png)
 
 
 ## URL to launch website

@@ -8,10 +8,12 @@ saveInput.on('click', function(event){
 event.preventDefault()
 var text = $(this).siblings('textarea').val()
 var time = $(this).siblings('div').text()
-console.log(text, time)
+// console.log(text, time)
 localStorage.setItem(time, text);
-
 }) 
+
+
+
 
 
 
@@ -24,15 +26,13 @@ var currentTime = function () {
   setInterval(currentTime, 1000);
 
 
-// Setting the time by color
+// Setting the fields by color
 allTextAreas.each(function(){
 
 var blockHour = parseInt($(this).parent().attr('id').split('-')[1])
-console.log(blockHour)
+// console.log(blockHour)
 var currentHour = moment().hour()
-console.log(currentHour)
-
-
+// console.log(currentHour)
 
 
   if (currentHour === blockHour) {
@@ -52,16 +52,24 @@ console.log(currentHour)
   $(this).addClass('past');
 }
 }) 
-// Not working:
-// var allTextAreas = $('.textarea')
 
-// for (var i = 0; i < currentTime; i++) {
 
-//   if (currentTime > time) {
-//   $(allTextAreas).addClass('future');
-// }else if (currentTime === time) {
-//   $(allTextAreas).addClass('present');
-// } else {
-//   $(allTextAreas).addClass('past');
-// }
-// }
+
+// Retrieve data from Storage
+
+function retrieveInput() {
+
+  $("#hour").each(function() {
+      var currentHour = $(this).siblings('div').text()
+      var savedVal = localStorage.getItem(currentHour);
+      
+      // console.log(this);
+      console.log(currentHour);
+
+      if(savedVal !== null) {
+          $(this).siblings('textarea').val(savedVal);
+      }
+  });
+}
+
+retrieveInput();
