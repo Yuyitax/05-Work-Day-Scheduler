@@ -3,6 +3,7 @@ var allTextAreas = $('.textarea')
 var saveInput = $('.saveBtn');
 
 
+
 // Save input to local Storage
 saveInput.on('click', function(event){
 event.preventDefault()
@@ -11,9 +12,6 @@ var time = $(this).siblings('div').text()
 // console.log(text, time)
 localStorage.setItem(time, text);
 }) 
-
-
-
 
 
 
@@ -57,19 +55,43 @@ var currentHour = moment().hour()
 
 // Retrieve data from Storage
 
-function retrieveInput() {
-
-  $("#hour").each(function() {
-      var currentHour = $(this).siblings('div').text()
-      var savedVal = localStorage.getItem(currentHour);
-      
-      // console.log(this);
-      console.log(currentHour);
-
-      if(savedVal !== null) {
-          $(this).siblings('textarea').val(savedVal);
-      }
-  });
+window.onload = loadVariable;
+function loadVariable() {
+  var times = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM']
+  for (let i = 0; i < times.length; i++) {
+    let localStorageValue = localStorage.getItem(times[i]);
+    // console.log(localStorage.getItem(times[i]))
+    document.getElementById(i).innerHTML = localStorageValue
+  }
 }
 
-retrieveInput();
+
+
+// window.onload = function loadInput() {
+// const textInputs = parseInt($(this).siblings('textarea').val());
+// for (var i = 0; i < textInputs.length; i++) {
+//   console.log(textInputs[i]);
+//   }
+
+
+
+
+// window.onload = function loadInput() {
+// var savedInput = localStorage.getItem('8:00 AM');
+// $('#08', '#09', '#10','#11', '#12', '#13', '#14', '#15', '#16', '#17' ).innerText = savedInput
+// }
+
+// function retrieveInput() {
+//   $("#hour").each(function() {
+//       var currentHour = $(this).siblings('div').text()
+//       var savedVal = localStorage.getItem(currentHour);
+      
+//       // console.log(this);
+//       console.log(currentHour);
+
+//       if(savedVal !== null) {
+//           $(this).siblings('textarea').val(savedVal);
+//       }
+//   });
+// }
+// retrieveInput();
